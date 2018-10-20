@@ -1,0 +1,13 @@
+<h1>New game</h1>
+<form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <mat-form-field class="input">
+    <input 
+    matInput placeholder="Player 1 Name" name="player1" ngModel>
+  </mat-form-field>
+  <mat-form-field class="input">
+    <input 
+    matInput placeholder="Player 2 Name" name="player2" ngModel>
+  </mat-form-field>
+  <br>
+  <button type="submit" mat-flat-button color="primary">Play!</button>
+</form>

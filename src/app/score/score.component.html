@@ -1,0 +1,14 @@
+<mat-card class="card">
+    <mat-card-header>
+        <mat-card-title>
+            Score
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+        <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let round of rounds">
+                Round {{round.number}} - Winner: {{round.winner.name}}
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>

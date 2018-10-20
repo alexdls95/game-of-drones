@@ -1,0 +1,19 @@
+button {
+    float: right;
+    margin-right: 8px;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+.form {
+    max-width: 500px;
+    min-width: 150px;
+    margin: auto;
+    overflow: auto;
+}
+
+.input {
+    width: 100%;
+}
