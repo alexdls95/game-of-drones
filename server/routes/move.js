@@ -19,6 +19,11 @@ const moves = [
         move: 'scissors',
         kills: 'paper'
     },
+    {
+        _id: 4,
+        move: 'dog',
+        kills: 'cat'
+    },
 ]
 
 app.get('/', (req, res) => res.status(200).json(moves))

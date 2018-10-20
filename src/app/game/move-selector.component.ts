@@ -1,21 +1,29 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Round } from './round.model';
 import { Player } from '../auth/player.model';
 import { Move } from './move.model';
+import { MoveService } from './move.service';
 
 @Component({
   selector: 'app-move-selector',
   templateUrl: './move-selector.component.html',
-  styleUrls: ['./move-selector.component.css', '../app.component.css']
+  styleUrls: ['./move-selector.component.css', '../app.component.css'],
+  providers: [MoveService]
 })
 
-export class MoveSelectorComponent {
-  move: Move = {value: 0, name: '', kills: ''};
+export class MoveSelectorComponent implements OnInit {
+  constructor(private moveService: MoveService) {}
+
   round = new Round(1);
   player = new Player('Alex');
-  moves: Move[] = [
-    {value: 1, name: 'Paper', kills: 'Rock'},
-    {value: 2, name: 'Rock', kills: 'Scissors'},
-    {value: 3, name: 'Scissors', kills: 'Paper'}
-  ];
+  moves: Move[];
+  move = {_id: 0, move: '', kills: ''};
+  loading = true;
+
+  ngOnInit() {
+    this.moveService.getMoves()
+    .then((moves: Move[]) => {
+      this.moves = moves;
+    });
+  }
 }

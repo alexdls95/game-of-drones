@@ -1,7 +1,7 @@
 export class Move {
   constructor(
-    public value: number,
-    public name: string,
+    public _id: number,
+    public move: string,
     public kills: string
   ) {  }
 }

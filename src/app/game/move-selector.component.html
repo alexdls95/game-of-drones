@@ -3,16 +3,15 @@
 <form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
   <mat-form-field class="input">
     <mat-select placeholder="Select a move" [(value)]="move">
-      <mat-option [value]="{value: 0}">None</mat-option>
       <mat-option *ngFor="let move of moves" [value]="move">
-        {{move.name}}
+        {{move.move}}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <br>
-  <div *ngIf="move.value != 0">
+  <div *ngIf="move._id != 0">
     <button type="submit" mat-flat-button color="primary">OK</button>
-    <span> {{move.name}} move beats {{move.kills}} </span>
+    <span> {{move.move}} move beats {{move.kills}} </span>
   </div>
 </form>
 
