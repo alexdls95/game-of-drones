@@ -5,6 +5,6 @@ const PORT = 3000
 const debug = new Debug('game-of-drones:root')
 
 app.listen(PORT, () => {
-    debug('Server running at port ${PORT}');
+    debug('Server running at port ' + PORT);
 })
 

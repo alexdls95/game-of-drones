@@ -1,4 +1,4 @@
-import { Player } from '../player/player.model';
+import { Player } from '../auth/player.model';
 import { Move } from './move.model';
 
 export class Round {

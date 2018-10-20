@@ -1,6 +1,8 @@
 import express from 'express'
+import { move } from './routes'
+
 const app = express()
 
-app.get('/', (req, res) => res.send('Hola desde express!'))
+app.use('/api/moves', move)
 
 export default app

@@ -8,7 +8,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "start:server": "set DEBUG=game-of-drones* & babel-node server/index.js",
+    "start:server": "set DEBUG=game-of-drones* & nodemon server/index.js --exec babel-node",
     "start:client": "ng serve"
   },
   "private": true,

@@ -10,12 +10,12 @@ import { Move } from './move.model';
 })
 
 export class MoveSelectorComponent {
-  move: Move = {value: 0, name: '', killing_move_name: ''};
+  move: Move = {value: 0, name: '', kills: ''};
   round = new Round(1);
   player = new Player('Alex');
   moves: Move[] = [
-    {value: 1, name: 'Paper', killing_move_name: 'Rock'},
-    {value: 2, name: 'Rock', killing_move_name: 'Scissors'},
-    {value: 3, name: 'Scissors', killing_move_name: 'Paper'}
+    {value: 1, name: 'Paper', kills: 'Rock'},
+    {value: 2, name: 'Rock', kills: 'Scissors'},
+    {value: 3, name: 'Scissors', kills: 'Paper'}
   ];
 }
