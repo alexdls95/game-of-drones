@@ -3,6 +3,12 @@ button {
     margin-right: 8px;
 }
 
+.card {
+    max-width: 500px;
+    min-width: 150px;
+    margin: auto;
+}
+
 h1, h2 {
     text-align: center;
 }
@@ -17,3 +23,5 @@ h1, h2 {
 .input {
     width: 100%;
 }
+
+

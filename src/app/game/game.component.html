@@ -1,0 +1,31 @@
+<h1>Round {{round.number}}</h1>
+<h2>Player: {{player.name}}</h2>
+<form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
+  <mat-form-field class="input">
+    <mat-select placeholder="Select a move" [(value)]="move">
+      <mat-option *ngFor="let move of moves" [value]="move" name="move">
+        {{move.move}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <div *ngIf="move._id != 0">
+    <button type="submit" mat-flat-button color="primary" >OK</button>
+    <span> {{move.move}} move beats {{move.kills}} </span>
+  </div>
+</form>
+<hr>
+<mat-card class="card">
+  <mat-card-header>
+      <mat-card-title>
+          Score
+      </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+      <mat-list role="list">
+          <mat-list-item role="listitem" *ngFor="let round of rounds">
+              Round {{round.number}} - Winner: {{round.winner.name}}
+          </mat-list-item>
+      </mat-list>
+  </mat-card-content>
+</mat-card>
