@@ -1,42 +1,29 @@
 import { Component } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { Player } from './player.model';
-import { PlayerService } from './player.service';
+import { GameService } from '../game/game.service';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css'],
-  providers: [PlayerService]
+  providers: [GameService]
 })
 
 export class LoginComponent {
   constructor(
-    private playerservice: PlayerService,
+    private gameService: GameService,
     private router: Router) {}
 
-    player1 = new Player();
-    player2 = new Player();
-
   onSubmit(form: NgForm) {
-    this.player1.name = form.value.player1;
-    this.player2.name = form.value.player2;
+    const namePlayer1 = form.value.player1;
+    const namePlayer2 = form.value.player2;
 
-    this.playerservice.addPlayer(this.player1)
+    this.gameService.newGame(namePlayer1, namePlayer2)
     .subscribe(
-      (p) => {
-        this.player1._id = p._id;
-        console.log('Player1 added!');
-        this.playerservice.addPlayer(this.player2)
-        .subscribe(
-          (p2) => {
-            this.player2._id = p2._id;
-            console.log('Player2 added!');
-            this.router.navigate(['/game'], { queryParams: { game: 'new', player1: this.player1._id, player2: this.player2._id } });
-          },
-          error => console.log(error)
-        );
+      ({ _id }) => {
+        console.log('Game created!');
+        this.router.navigate(['/game', _id]);
       },
       error => console.log(error)
     );

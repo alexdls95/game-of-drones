@@ -5,19 +5,20 @@ import { Move } from './move.model';
 import { MoveService } from './move.service';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { PlayerService } from '../auth/player.service';
+import { GameService } from './game.service';
+import { Game } from './game.model';
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css', '../app.component.css'],
-  providers: [MoveService, PlayerService]
+  providers: [MoveService, GameService]
 })
 
 export class GameComponent implements OnInit {
   constructor(
     private moveService: MoveService,
-    private playerService: PlayerService,
+    private gameService: GameService,
     private route: ActivatedRoute) {
       this.move = new Move();
       this.player = new Player();
@@ -30,17 +31,6 @@ export class GameComponent implements OnInit {
   moves: Move[];
   move: Move;
 
-  rounds: Round[] = [
-    {
-      _id: 1,
-      winner: {name: 'Alex'}
-    },
-    {
-      _id: 2,
-      winner: {name: 'Aldana'}
-    }
-  ];
-
   ngOnInit() {
     this.moveService.getMoves()
     .then((moves: Move[]) => {
@@ -48,20 +38,29 @@ export class GameComponent implements OnInit {
     })
     .catch(error => console.log(error));
 
-    const game = this.route.snapshot.queryParams['game'];
-    console.log(game);
+    const gameID = this.route.snapshot.params['id'];
 
-    if (game === 'new') {
-      this.round = new Round(1);
-      const idPlayer1 = this.route.snapshot.queryParams['player1'];
-      this.playerService.getPlayer(idPlayer1)
-      .then((player: Player) => {
-        this.player = player;
+    if (gameID != null) {
+      this.gameService.getGame(gameID)
+      .then((game: Game) => {
+        console.log('Game found!');
+        console.log(game);
       })
       .catch(error => console.log(error));
-    } else {
-      console.log('Game isn\'t new');
     }
+
+
+    // if (game === 'new') {
+    //   this.round = new Round(1);
+    //   const idPlayer1 = this.route.snapshot.queryParams['player1'];
+    //   this.playerService.getPlayer(idPlayer1)
+    //   .then((player: Player) => {
+    //     this.player = player;
+    //   })
+    //   .catch(error => console.log(error));
+    // } else {
+    //   console.log('Game isn\'t new');
+    // }
 
   }
 

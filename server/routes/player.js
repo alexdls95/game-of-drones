@@ -2,15 +2,6 @@ import express from 'express'
 
 const app = express.Router()
 
-const players = []
-
-app.post('/', (req, res) => {
-    const player = req.body
-    player._id = +new Date()
-    players.push(player)
-    res.status(201).json(player)
-})
-
 app.get('/', (req, res) => res.status(200).json(players))
 
 app.get('/:id', (req, res) => {

@@ -1,7 +1,6 @@
 import express from 'express'
 import bodyParser from 'body-parser';
-import { move } from './routes'
-import { player } from './routes'
+import { move, player, game } from './routes'
 
 
 const app = express()
@@ -22,5 +21,6 @@ if (process.env.NODE_ENV === 'development') {
 
 app.use('/api/moves', move)
 app.use('/api/players', player)
+app.use('/api/game', game)
 
 export default app
