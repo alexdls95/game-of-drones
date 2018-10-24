@@ -60,7 +60,7 @@ export class GameComponent implements OnInit {
     this.game = game;
     if (game.winner != null) {
       console.log('There is a Winner!!!');
-      this.router.navigate(['/winner'], { queryParams: { name: this.game.winner.name }});
+      this.router.navigate(['/game', this.game._id, 'winner'], { queryParams: { name: this.game.winner.name }});
     } else {
       this.round = this.game.rounds[this.game.rounds.length - 1];
       this.nextPlayerOrFinishRound();
