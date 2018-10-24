@@ -20,6 +20,10 @@ The server runs on port 3000.
 
 Running the `npm start` command concurrently executes the client and server services.
 
+## Editing the game
+
+You can edit the configuration of the game, since you have the possibility to add, eliminate or modify movements in a simple way, editing the file `game-of-drones/server/routes/move.js`.
+
 ## Build
 
 Run `ng build` to build the project.
