@@ -1,0 +1,13 @@
+button {
+    margin: auto;
+}
+
+h1, h2 {
+    text-align: center;
+}
+
+img {
+    margin: auto;
+    height: auto;
+    width: 100%;
+}

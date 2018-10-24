@@ -4,7 +4,7 @@ import { Player } from '../auth/player.model';
 import { Move } from './move.model';
 import { MoveService } from './move.service';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { GameService } from './game.service';
 import { Game } from './game.model';
 
@@ -19,7 +19,8 @@ export class GameComponent implements OnInit {
   constructor(
     private moveService: MoveService,
     private gameService: GameService,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private router: Router) {
       this.move = new Move();
       this.player = new Player();
       this.round = new Round();
@@ -59,6 +60,7 @@ export class GameComponent implements OnInit {
     this.game = game;
     if (game.winner != null) {
       console.log('There is a Winner!!!');
+      this.router.navigate(['/winner'], { queryParams: { name: this.game.winner.name }});
     } else {
       this.round = this.game.rounds[this.game.rounds.length - 1];
       this.nextPlayerOrFinishRound();
@@ -96,7 +98,6 @@ export class GameComponent implements OnInit {
       (game) => {
         console.log('Round sent!');
         this.assignGame(game);
-
       },
       error => console.log(error)
     );

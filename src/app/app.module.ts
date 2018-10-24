@@ -9,13 +9,14 @@ import { MaterialModule } from './material.module';  // Todos los demás imports
 import 'hammerjs';  // Para gestos táctiles
 import { LoginComponent } from './auth/login.component';
 import { GameComponent } from './game/game.component';
-
 import { Routing } from './app.routing';
+import { WinnerComponent } from './win/winner.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     GameComponent,
+    WinnerComponent
   ],
   imports: [
     BrowserModule,

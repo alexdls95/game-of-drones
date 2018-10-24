@@ -46,7 +46,8 @@ function endCheckerMiddleware(req, res, next) {
         req.game.winner = req.game.player2
     if (req.game.winner != null)
         res.status(201).json(req.game)
-    next()
+    else
+        next()
 }
 
 function newGame(p1 = null, p2 = null) {
