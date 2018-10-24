@@ -24,47 +24,81 @@ export class GameComponent implements OnInit {
       this.player = new Player();
       this.round = new Round();
 
-    }
+  }
 
+  game: Game;
   round: Round;
   player: Player;
   moves: Move[];
   move: Move;
 
   ngOnInit() {
+    this.getMoves();
+
+    const gameID = this.route.snapshot.params['id'];
+    if (gameID != null) {
+      this.getGame(gameID);
+    }
+  }
+
+  getMoves() {
     this.moveService.getMoves()
     .then((moves: Move[]) => {
       this.moves = moves;
     })
     .catch(error => console.log(error));
+  }
 
-    const gameID = this.route.snapshot.params['id'];
-
-    if (gameID != null) {
-      this.gameService.getGame(gameID)
-      .then((game: Game) => {
-        console.log('Game found!');
-        console.log(game);
-      })
+  getGame(gameID: any) {
+    this.gameService.getGame(gameID)
+      .then((game: Game) => this.assignGame(game))
       .catch(error => console.log(error));
+  }
+
+  assignGame(game: Game) {
+    this.game = game;
+    if (game.winner != null) {
+      console.log('There is a Winner!!!');
+    } else {
+      this.round = this.game.rounds[this.game.rounds.length - 1];
+      this.nextPlayerOrFinishRound();
     }
+  }
 
-
-    // if (game === 'new') {
-    //   this.round = new Round(1);
-    //   const idPlayer1 = this.route.snapshot.queryParams['player1'];
-    //   this.playerService.getPlayer(idPlayer1)
-    //   .then((player: Player) => {
-    //     this.player = player;
-    //   })
-    //   .catch(error => console.log(error));
-    // } else {
-    //   console.log('Game isn\'t new');
-    // }
-
+  nextPlayerOrFinishRound() {
+    if (this.round.movePlayer1 == null) {
+      this.player = this.game.player1;
+    } else if (this.round.movePlayer2 == null) {
+      this.player = this.game.player2;
+    } else {
+      this.finishRound();
+    }
   }
 
   onSubmit(form: NgForm) {
-    console.log(this.move);
+    console.log('onSubmit');
+    if (this.round.movePlayer1 == null) {
+      console.log('this.round.movePlayer1 == null');
+      this.round.movePlayer1 = this.move;
+    } else if (this.round.movePlayer2 == null) {
+      console.log('this.round.movePlayer2 == null');
+      this.round.movePlayer2 = this.move;
+    }
+    this.nextPlayerOrFinishRound();
+  }
+
+  finishRound() {
+    console.log('Send round');
+    console.log(this.game);
+
+    this.gameService.finishRound(this.game._id, this.round)
+    .subscribe(
+      (game) => {
+        console.log('Round sent!');
+        this.assignGame(game);
+
+      },
+      error => console.log(error)
+    );
   }
 }

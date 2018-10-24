@@ -3,8 +3,8 @@ import { Move } from './move.model';
 
 export class Round {
   constructor(
-    public move_player1?: Move,
-    public move_player2?: Move,
+    public movePlayer1?: Move,
+    public movePlayer2?: Move,
     public winner?: Player
   ) { }
 }

@@ -22,9 +22,9 @@
       </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-      <mat-list role="list">
-          <mat-list-item role="listitem" *ngFor="let round of rounds">
-              Round {{round.number}} - Winner: {{round.winner.name}}
+      <mat-list role="list" *ngIf="game != null">
+          <mat-list-item role="listitem" *ngFor="let round of game.rounds">
+              <p *ngIf="round.winner != null">Round {{round.number}} - Winner: {{round.winner.name}}</p>
           </mat-list-item>
       </mat-list>
   </mat-card-content>

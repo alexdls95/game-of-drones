@@ -6,6 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/catch';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Game } from './game.model';
+import { Round } from './round.model';
 
 
 @Injectable()
@@ -37,6 +38,16 @@ export class GameService {
         .toPromise()
         .then(response => response as Game)
         .catch(this.handleError);
+    }
+
+    finishRound(id: number, round: Round) {
+        console.log('finishRound');
+        const url = urljoin(this.gameUrl, '' + id, 'round');
+        console.log('sending url: ' + url);
+        const body = JSON.stringify(round);
+        const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+        return this.http.post<Game>(url, body, { headers });
     }
 
     handleError(error: any) {
