@@ -24,10 +24,6 @@ export class PlayerService {
         return this.http.post<Player>(this.playersUrl, body, { headers })
             .catch((error: Response) => Observable.throw(error));
 
-        // return this.http.post<Response>(this.playersUrl, body, { headers })
-        //     .toPromise()
-        //     .then(response => response.json() as Player)
-        //     .catch(this.handleError);
     }
 
     getPlayer(id): Promise<void | Player> {
@@ -35,6 +31,13 @@ export class PlayerService {
         return this.http.get(url)
         .toPromise()
         .then(response => response as Player)
+        .catch(this.handleError);
+    }
+
+    getPlayers(): Promise<void | Player[]> {
+        return this.http.get(this.playersUrl)
+        .toPromise()
+        .then(response => response as Player[])
         .catch(this.handleError);
     }
 

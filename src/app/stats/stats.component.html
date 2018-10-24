@@ -1,0 +1,13 @@
+<h1 style="text-align: center">Statistics</h1>
+<mat-card class="card" *ngIf="players != null && players.length > 0">
+    <mat-card-content>
+        <mat-list role="list">
+            <mat-list-item role="listitem" *ngFor="let player of players">
+                <p>{{player.name}} - {{player.rank}} wins</p>
+            </mat-list-item>
+        </mat-list>
+    </mat-card-content>
+</mat-card>
+<p *ngIf="players == null || players.length == 0" style="text-align: center">
+    There are no players yet. <a routerLink="/">Play</a> for a while to generate a ranking with players.
+</p>

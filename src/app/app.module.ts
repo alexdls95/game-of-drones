@@ -11,12 +11,15 @@ import { LoginComponent } from './auth/login.component';
 import { GameComponent } from './game/game.component';
 import { Routing } from './app.routing';
 import { WinnerComponent } from './win/winner.component';
+import { StatsComponent } from './stats/stats.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     GameComponent,
-    WinnerComponent
+    WinnerComponent,
+    StatsComponent
   ],
   imports: [
     BrowserModule,
