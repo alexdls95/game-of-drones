@@ -19,11 +19,6 @@ const moves = [
         move: 'scissors',
         kills: 'paper'
     },
-    {
-        _id: 4,
-        move: 'dog',
-        kills: 'cat'
-    },
 ]
 
 
