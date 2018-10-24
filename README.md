@@ -1,14 +1,24 @@
-# GameOfDrones
+# Game Of Drones
+
+This project is my first experience with the MEAN stack. It has been developed with the aim of evaluating my technical skills in web development. I built it in exactly one week, from courses, tutorials and online documentation.
+
+The persistence of information in the database has not yet been fully implemented, so data is lost if the server is turned off.
+
+The project is made to be executed in a development environment and has dependencies that are already specified in its configuration file. These dependencies are necessary for the execution of the application.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
 
-## Development server
+## Requirements
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Install [npm](https://www.npmjs.com/get-npm)
 
-## Code scaffolding
+## Start
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+Run `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+The server runs on port 3000.
+
+Running the `npm start` command concurrently executes the client and server services.
 
 ## Build
 
@@ -21,7 +31,3 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 ## Running end-to-end tests
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).

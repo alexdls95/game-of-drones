@@ -59,7 +59,6 @@ export class GameComponent implements OnInit {
   assignGame(game: Game) {
     this.game = game;
     if (game.winner != null) {
-      console.log('There is a Winner!!!');
       this.router.navigate(['/game', this.game._id, 'winner'], { queryParams: { name: this.game.winner.name }});
     } else {
       this.round = this.game.rounds[this.game.rounds.length - 1];
@@ -78,12 +77,9 @@ export class GameComponent implements OnInit {
   }
 
   onSubmit(form: NgForm) {
-    console.log('onSubmit');
     if (this.round.movePlayer1 == null) {
-      console.log('this.round.movePlayer1 == null');
       this.round.movePlayer1 = this.move;
     } else if (this.round.movePlayer2 == null) {
-      console.log('this.round.movePlayer2 == null');
       this.round.movePlayer2 = this.move;
     }
     this.move = {_id: 0};
@@ -91,9 +87,6 @@ export class GameComponent implements OnInit {
   }
 
   finishRound() {
-    console.log('Send round');
-    console.log(this.game);
-
     this.gameService.finishRound(this.game._id, this.round)
     .subscribe(
       (game) => {

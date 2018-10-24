@@ -41,9 +41,7 @@ export class GameService {
     }
 
     finishRound(id: number, round: Round) {
-        console.log('finishRound');
         const url = urljoin(this.gameUrl, '' + id, 'round');
-        console.log('sending url: ' + url);
         const body = JSON.stringify(round);
         const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 

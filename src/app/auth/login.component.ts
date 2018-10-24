@@ -24,7 +24,6 @@ export class LoginComponent {
       this.gameService.newGame(namePlayer1, namePlayer2)
       .subscribe(
         ({ _id }) => {
-          console.log('Game created!');
           this.router.navigate(['/game', _id]);
         },
         error => console.log(error)
