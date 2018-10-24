@@ -2,15 +2,13 @@
 <form class="form" (ngSubmit)="onSubmit(f)" #f="ngForm">
   <mat-form-field class="input">
     <input 
-    matInput placeholder="Player 1 Name" name="player1" ngModel>
+    matInput placeholder="Player 1 Name" name="player1" required ngModel>
   </mat-form-field>
   <mat-form-field class="input">
     <input 
-    matInput placeholder="Player 2 Name" name="player2" ngModel>
+    matInput placeholder="Player 2 Name" name="player2" required ngModel>
   </mat-form-field>
   <br>
-  <!-- TODO: Borrar esta línea. Está solo como posible referencia -->
-  <!-- <button type="submit" mat-flat-button color="primary" routerLink="/game" [queryParams]="{round: 1, player: 1}">Play!</button> -->
   <button type="submit" mat-flat-button color="primary">Play!</button>
 
 </form>

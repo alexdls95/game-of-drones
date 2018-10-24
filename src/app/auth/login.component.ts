@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { NgForm, FormControl, Validators } from '@angular/forms';
 import { GameService } from '../game/game.service';
 import { Router } from '@angular/router';
 
@@ -15,17 +15,20 @@ export class LoginComponent {
     private gameService: GameService,
     private router: Router) {}
 
+  nameFormControl = new FormControl('', [Validators.required]);
   onSubmit(form: NgForm) {
-    const namePlayer1 = form.value.player1;
-    const namePlayer2 = form.value.player2;
+    if (form.valid) {
+      const namePlayer1 = form.value.player1;
+      const namePlayer2 = form.value.player2;
 
-    this.gameService.newGame(namePlayer1, namePlayer2)
-    .subscribe(
-      ({ _id }) => {
-        console.log('Game created!');
-        this.router.navigate(['/game', _id]);
-      },
-      error => console.log(error)
-    );
+      this.gameService.newGame(namePlayer1, namePlayer2)
+      .subscribe(
+        ({ _id }) => {
+          console.log('Game created!');
+          this.router.navigate(['/game', _id]);
+        },
+        error => console.log(error)
+      );
+    }
   }
 }
