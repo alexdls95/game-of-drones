@@ -1,6 +1,7 @@
 import express from 'express'
 
 const app = express.Router()
+export const players = []
 
 app.get('/', (req, res) => res.status(200).json(players))
 

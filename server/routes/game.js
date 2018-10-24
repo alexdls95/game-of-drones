@@ -1,10 +1,11 @@
 import express from 'express'
 import Debug from 'debug'
+import { players } from './player'
 
 const app = express.Router()
 const debug = new Debug('game-of-drones:root')
 const games = []
-const players = []
+
 
 function gameGetterMiddleware(req, res, next) {
     const { id } = req.params
@@ -44,10 +45,12 @@ function endCheckerMiddleware(req, res, next) {
         req.game.winner = req.game.player1
     else if (req.game.wins.player2 >= 3)
         req.game.winner = req.game.player2
-    if (req.game.winner != null)
-        res.status(201).json(req.game)
-    else
-        next()
+    if (req.game.winner != null) {
+        req.game.winner.rank++
+        return res.status(201).json(req.game)
+    }
+        
+    next()
 }
 
 function newGame(p1 = null, p2 = null) {

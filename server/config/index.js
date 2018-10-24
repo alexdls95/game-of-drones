@@ -1,0 +1,1 @@
+export const mongoUrl = 'mongodb://localhost/game-of-drones'
