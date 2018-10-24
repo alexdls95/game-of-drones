@@ -11,21 +11,28 @@
   <br>
   <div *ngIf="move._id != 0">
     <button type="submit" mat-flat-button color="primary" >OK</button>
-    <span> {{move.move}} move beats {{move.kills}} </span>
+    <small> Tip: {{move.move}} move beats {{move.kills}} </small>
   </div>
 </form>
-<hr>
-<mat-card class="card">
+<br>
+<mat-card class="card" *ngIf="game != null">
   <mat-card-header>
       <mat-card-title>
           Score
       </mat-card-title>
   </mat-card-header>
   <mat-card-content>
-      <mat-list role="list" *ngIf="game != null">
-          <mat-list-item role="listitem" *ngFor="let round of game.rounds">
-              <p *ngIf="round.winner != null">Round {{round.number}} - Winner: {{round.winner.name}}</p>
+      <mat-list role="list">
+          <mat-list-item role="listitem" *ngIf="game.rounds.length == 1 && game.rounds[0].winner == null">
+            <small>No one's scored yet. Make a move!</small>
           </mat-list-item>
+          <div *ngIf="game.rounds.length > 1 || game.rounds[0].winner != null">
+            <mat-list-item role="listitem" *ngFor="let r of game.rounds">
+                <p *ngIf="r.winner != null">Round {{r.number}} - Winner: {{r.winner.name}}</p>
+                <p *ngIf="r.number > round.number && r.winner == null">Round {{r.number}} - Draw</p>
+              </mat-list-item>
+          </div>
+          
       </mat-list>
   </mat-card-content>
 </mat-card>

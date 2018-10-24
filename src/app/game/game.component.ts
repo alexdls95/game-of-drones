@@ -86,6 +86,7 @@ export class GameComponent implements OnInit {
       console.log('this.round.movePlayer2 == null');
       this.round.movePlayer2 = this.move;
     }
+    this.move = {_id: 0};
     this.nextPlayerOrFinishRound();
   }
 
