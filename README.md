@@ -1,10 +1,10 @@
 # Game Of Drones
 
-This project is my first experience with the MEAN stack. It has been developed with the aim of evaluating my technical skills in web development. I built it in exactly one week, from courses, tutorials and online documentation.
+This project is my first experience with the MEAN stack.  It has been developed with the aim of putting into practice my technical skills learned in the process of research on this technology.
 
-The persistence of information in the database has not yet been fully implemented, so data is lost if the server is turned off.
+It is a simple game of Paper, Rock, Scissors, in which it is easy to change or add new movements. 
 
-The project is made to be executed in a development environment and has dependencies that are already specified in its configuration file. These dependencies are necessary for the execution of the application.
+The persistence of the information in the database has not yet been fully implemented, so data is lost if the server is shut down.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
 
